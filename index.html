@@ -19,11 +19,23 @@
             --accent-color: #ffc107;
         }
 
+        /* تعديل أساسي لجعل الفوتر دائماً في الأسفل */
+        html, body {
+            height: 100%;
+        }
+
         body {
             font-family: 'Cairo', sans-serif;
             background-color: #f8f9fa;
             color: #333;
-            overflow-x: hidden;
+            display: flex;
+            flex-direction: column; /* ترتيب العناصر عمودياً */
+            margin: 0;
+        }
+
+        /* جعل منطقة المحتوى تأخذ كل المساحة المتاحة وتدفع الفوتر للأسفل */
+        #main-sections, #study-content {
+            flex: 1 0 auto;
         }
 
         /* Hero Section Responsive */
@@ -142,10 +154,11 @@
         .btn-download:hover { background-color: #e65100; color: white; }
 
         footer {
+            flex-shrink: 0; /* يمنع الفوتر من الانكماش */
             background: #212529;
             color: white;
-            padding: 30px 0;
-            margin-top: 50px;
+            padding: 25px 0;
+            width: 100%;
         }
 
         @media (max-width: 576px) {
@@ -197,7 +210,7 @@
             </div>
         </section>
 
-        <section id="levels" class="container py-5 bg-light rounded-4 shadow-sm">
+        <section id="levels" class="container py-5 bg-light rounded-4 shadow-sm mb-5">
             <h2 class="section-title text-center">المستويات الدراسية</h2>
             <div class="row g-4 row-cols-1 row-cols-sm-2 row-cols-lg-4 px-3">
                 <div class="col"><div class="custom-card" onclick="openLevel(1)"><i class="fas fa-layer-group"></i><h4>المستوى 1</h4></div></div>
@@ -207,8 +220,7 @@
             </div>
         </section>
 
-        <!-- تم تعديل قسم التواصل هنا ليعمل مع Formspree -->
-        <section id="contact" class="container py-5 px-4">
+        <section id="contact" class="container py-5 px-4 mb-5">
             <div class="col-lg-6 mx-auto card p-4 shadow-sm border-0">
                 <h2 class="section-title text-center">تواصل معنا</h2>
                 <form action="https://formspree.io/f/xgopbqzn" method="POST">
@@ -232,6 +244,7 @@
         <div id="dynamic-render"></div>
     </div>
 
+    <!-- الفوتر الآن دائماً في الأسفل بفضل CSS Flexbox -->
     <footer class="text-center">
         <div class="container">
             <p class="mb-0">جميع الحقوق محفوظة &copy; 2024 - مكتبة علوم إحصاء وحاسب</p>
