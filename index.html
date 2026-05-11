@@ -207,13 +207,22 @@
             </div>
         </section>
 
+        <!-- تم تعديل قسم التواصل هنا ليعمل مع Formspree -->
         <section id="contact" class="container py-5 px-4">
             <div class="col-lg-6 mx-auto card p-4 shadow-sm border-0">
                 <h2 class="section-title text-center">تواصل معنا</h2>
-                <div class="mb-3"><input type="text" class="form-control p-3" placeholder="الاسم"></div>
-                <div class="mb-3"><input type="email" class="form-control p-3" placeholder="البريد"></div>
-                <div class="mb-3"><textarea class="form-control p-3" rows="4" placeholder="كيف يمكننا مساعدتك؟"></textarea></div>
-                <button class="btn btn-primary w-100 py-3 fw-bold">إرسال الرسالة</button>
+                <form action="https://formspree.io/f/xgopbqzn" method="POST">
+                    <div class="mb-3">
+                        <input type="text" name="الاسم" class="form-control p-3" placeholder="الاسم" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="email" name="البريد" class="form-control p-3" placeholder="البريد الإلكتروني" required>
+                    </div>
+                    <div class="mb-3">
+                        <textarea name="الرسالة" class="form-control p-3" rows="4" placeholder="كيف يمكننا مساعدتك؟" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 py-3 fw-bold">إرسال الرسالة</button>
+                </form>
             </div>
         </section>
     </div>
@@ -230,11 +239,10 @@
     </footer>
 
     <script>
-        // داتـا الموقع - ضع روابط الـ PDF هنا في خانة l
         const db = {
             level1: { 
                 sem1: [
-                    { name: "تفاضل وتكامل 1", desc: "أساسيات التفاضل والتكامل", files: [{n: "المحاضرة الأولى.pdf", l: "file(1).pdf"}] }
+                    { name: "تفاضل وتكامل 1", desc: "أساسيات التفاضل والتكامل", files: [{n: "المحاضرة الأولى.pdf", l: "link-to-your-pdf.pdf"}] }
                 ], 
                 sem2: [] 
             },
@@ -292,7 +300,6 @@
         function openSubject(lv, sem, i) {
             const s = db[`level${lv}`][sem][i];
             
-            // بناء قائمة الملفات مع أزرار العرض والتحميل
             let fHtml = s.files.map(f => `
                 <div class="file-item">
                     <div class="file-info">
