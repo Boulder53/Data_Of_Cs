@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مكتبة مواد علوم - قسم إحصاء وحاسب</title>
+
+    <!-- Bootstrap 5 RTL -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+    <!-- Google Fonts (Cairo) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #1e3c72;
+            --secondary: #2a5298;
+            --accent: #ffc107;
+            --light: #f8f9fa;
+            --dark: #212529;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f4f7f6;
+            color: var(--dark);
+            scroll-behavior: smooth;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--primary);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .navbar-brand { font-weight: 700; font-size: 1.5rem; }
+
+        /* Sections Styling */
+        section { padding: 80px 0; }
+        .section-title {
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        /* Cards Styling */
+        .custom-card {
+            background: white;
+            border: none;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            height: 100%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .custom-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-bottom: 5px solid var(--accent);
+        }
+        .custom-card i { font-size: 3.5rem; color: var(--primary); margin-bottom: 20px; }
+
+        /* Dynamic Content Area */
+        #dynamic-container { display: none; min-height: 600px; padding: 50px 0; }
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 25px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .back-btn:hover { background: var(--accent); color: var(--dark); }
+
+        /* File List Styling */
+        .file-item {
+            background: white;
+            margin-bottom: 15px;
+            padding: 15px 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-right: 6px solid var(--primary);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        /* Footer */
+        footer { background: var(--dark); color: white; padding: 40px 0; text-align: center; }
+
+        /* Responsive Grid Adjustments */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .section-title { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#" onclick="showHome()"><i class="fas fa-graduation-cap me-2"></i> مكتبة العلوم</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto text-center">
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="showHome()">الرئيسية</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">عن الموقع</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#levels">المستويات</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">اتصل بنا</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="main-wrapper">
+        <!-- Hero Section -->
+        <header class="hero">
+            <div class="container px-4">
+                <h1 class="display-3 fw-bold mb-3">مكتبة مواد علوم</h1>
+                <h2 class="h3 mb-4">قسم إحصاء وعلوم حاسب</h2>
+                <p class="lead mb-4">مرجعك الشامل للمحاضرات والملفات الدراسية.</p>
+                <a href="#levels" class="btn btn-warning btn-lg fw-bold px-5 py-3">تصفح المستويات</a>
+            </div>
+        </header>
+
+        <!-- About Section -->
+        <section id="about" class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <h2 class="section-title text-start">عن الموقع</h2>
+                    <p class="fs-5 lh-lg">مكتبة رقمية مخصصة لطلبة قسم الإحصاء وعلوم الحاسب لتسهيل الوصول للمادة العلمية المنظمة.</p>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2232/2232688.png" alt="About" class="img-fluid" style="max-width: 250px;">
+                </div>
+            </div>
+        </section>
+
+        <!-- Levels Section -->
+        <section id="levels" class="bg-light">
+            <div class="container">
+                <h2 class="section-title">المستويات الدراسية</h2>
+                <div class="row g-4">
+                    <div class="col-6 col-md-3"><div class="custom-card" onclick="openLevel(1)"><i class="fas fa-folder"></i><h4>المستوى 1</h4></div></div>
+                    <div class="col-6 col-md-3"><div class="custom-card" onclick="openLevel(2)"><i class="fas fa-code"></i><h4>المستوى 2</h4></div></div>
+                    <div class="col-6 col-md-3"><div class="custom-card" onclick="openLevel(3)"><i class="fas fa-chart-bar"></i><h4>المستوى 3</h4></div></div>
+                    <div class="col-6 col-md-3"><div class="custom-card" onclick="openLevel(4)"><i class="fas fa-user-graduate"></i><h4>المستوى 4</h4></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section المعدل ليعمل مع Formspree -->
+        <section id="contact" class="container">
+            <div class="col-lg-7 mx-auto">
+                <div class="custom-card p-5">
+                    <h2 class="section-title">اتصل بنا</h2>
+                    <!-- استبدل YOUR_FORM_ID_HERE بالمعرف الخاص بك من Formspree -->
+                    <form action="https://formspree.io/f/xgopbqzn" method="POST">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label text-start d-block">الأسم الكامل</label>
+                                <input type="text" name="name" class="form-control p-3" placeholder="أدخل اسمك" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-start d-block">البريد الإلكتروني</label>
+                                <input type="email" name="email" class="form-control p-3" placeholder="mail@example.com" required>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label text-start d-block">رسالتك</label>
+                                <textarea name="message" class="form-control p-3" rows="4" placeholder="كيف يمكننا مساعدتك؟" required></textarea>
+                            </div>
+                            <!-- لضمان عدم وصول الرسائل المزعجة Spam -->
+                            <input type="text" name="_gotcha" style="display:none">
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary w-100 p-3 fw-bold">إرسال الرسالة</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Dynamic Container -->
+    <div id="dynamic-container" class="container"><div id="render-content"></div></div>
+
+    <footer>
+        <div class="container"><p>جميع الحقوق محفوظة &copy; مكتبة علوم 2024</p></div>
+    </footer>
+
+    <script>
+        // داتا الموقع
+        const db = {
+            level1: { sem1: [{ name: "مقدمة حاسب", desc: "أساسيات الحاسب", files: [{ n: "ملف 1", l: "file(1).pdf" }] }], sem2: [] },
+            level2: { sem1: [], sem2: [] }, level3: { sem1: [], sem2: [] }, level4: { sem1: [], sem2: [] }
+        };
+
+        const mainWrapper = document.getElementById('main-wrapper');
+        const dynamicContainer = document.getElementById('dynamic-container');
+        const renderContent = document.getElementById('render-content');
+
+        function showHome() { dynamicContainer.style.display = 'none'; mainWrapper.style.display = 'block'; window.scrollTo(0, 0); }
+
+        function openLevel(lvNum) {
+            mainWrapper.style.display = 'none'; dynamicContainer.style.display = 'block';
+            renderContent.innerHTML = `
+                <div class="back-btn" onclick="showHome()"><i class="fas fa-arrow-right"></i> الرئيسية</div>
+                <h2 class="section-title">المستوى ${lvNum}</h2>
+                <div class="row g-4 justify-content-center">
+                    <div class="col-md-5"><div class="custom-card p-5" onclick="openSemester(${lvNum}, 'sem1')"><h3>الترم الأول</h3></div></div>
+                    <div class="col-md-5"><div class="custom-card p-5" onclick="openSemester(${lvNum}, 'sem2')"><h3>الترم الثاني</h3></div></div>
+                </div>`;
+        }
+
+        function openSemester(lvNum, semKey) {
+            const subjects = db[`level${lvNum}`][semKey];
+            let subHTML = '';
+            if (subjects.length === 0) subHTML = '<p class="text-center w-100 py-5">لا توجد مواد حالياً.</p>';
+            else subjects.forEach((s, i) => {
+                subHTML += `<div class="col-md-4"><div class="custom-card p-4" onclick="openSubjectDetails(${lvNum},'${semKey}',${i})"><h5>${s.name}</h5></div></div>`;
+            });
+            renderContent.innerHTML = `<div class="back-btn" onclick="openLevel(${lvNum})"><i class="fas fa-arrow-right"></i> المستويات</div><div class="row g-4">${subHTML}</div>`;
+        }
+
+        function openSubjectDetails(lvNum, semKey, subIndex) {
+            const subject = db[`level${lvNum}`][semKey][subIndex];
+            let fHTML = '';
+            subject.files.forEach(f => {
+                fHTML += `<div class="file-item shadow-sm"><span>${f.n}</span><div class="btn-group"><a href="${f.l}" target="_blank" class="btn btn-outline-primary">فتح</a><a href="${f.l}" download class="btn btn-primary">تحميل</a></div></div>`;
+            });
+            renderContent.innerHTML = `
+                <div class="back-btn" onclick="openSemester(${lvNum},'${semKey}')"><i class="fas fa-arrow-right"></i> المواد</div>
+                <div class="card p-4 shadow-lg border-0"><h2>${subject.name}</h2><p>${subject.desc}</p><hr>${fHTML}</div>`;
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
